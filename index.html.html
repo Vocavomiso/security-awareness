@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cybersecurity Awareness | Training Simulation</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,Segoe UI,Arial,sans-serif}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#080b12;color:#f8fafc;display:grid;place-items:center;padding:24px}.shell{width:min(100%,700px);text-align:center}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:30px;color:#aeb9cc;font-size:13px;letter-spacing:.08em;text-transform:uppercase}.pill{border:1px solid #66758b;border-radius:999px;padding:8px 12px;color:#dce5f4}.panel{border:1px solid #303746;background:radial-gradient(circle at 50% 0%,#2d1119 0%,#11151f 47%,#0d1018 100%);border-radius:24px;padding:clamp(28px,6vw,64px) 24px;box-shadow:0 25px 100px #0008}.symbol{font-size:58px;color:#ff5367;line-height:1}h1{font-size:clamp(30px,6vw,52px);letter-spacing:.04em;margin:24px 0 14px;color:#ff5367}p{line-height:1.65;color:#c1cad9;font-size:17px;max-width:510px;margin:0 auto 24px}.timer{font-size:clamp(60px,12vw,98px);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.06em;margin:18px 0;color:white}.track{width:min(100%,420px);height:7px;border-radius:99px;background:#333b4c;margin:0 auto 24px;overflow:hidden}.bar{height:100%;width:100%;background:#ff5367;transition:width .35s linear}.small{font-size:13px;color:#a8b5c8}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}button{font:inherit;border:1px solid #64748b;border-radius:12px;padding:13px 20px;cursor:pointer;color:white;background:#202a3b;font-weight:650}button:hover,button:focus-visible{background:#33445f;outline:2px solid #90b4ff;outline-offset:2px}.primary{background:#e13d52;border-color:#e13d52}.primary:hover{background:#bf3146}.success{color:#4adea0}.tips{text-align:left;max-width:480px;margin:20px auto 0;color:#d6deeb;line-height:1.8}.tips li{padding:3px 0}footer{margin-top:25px;font-size:13px;color:#98a6ba}a{color:#b9d1ff} [hidden]{display:none!important}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="shell">
+<div class="top"><span>Cybersecurity Awareness</span><span class="pill">TRAINING SIMULATION · NO REAL THREAT</span></div>
+<section class="panel" id="alert" aria-live="polite">
+<div class="symbol" aria-hidden="true">⚠</div>
+<h1>SECURITY ALERT</h1>
+<p>You clicked a link in an email. This is a <strong>safe phishing awareness simulation</strong> — your device and data are not affected.</p>
+<div class="timer" id="timer" role="timer" aria-label="Seconds remaining">00:30</div>
+<div class="track" aria-hidden="true"><div class="bar" id="bar"></div></div>
+<div class="small">Training message will appear when the countdown ends.</div>
+<div class="actions"><button id="skip">Exit simulation now</button></div>
+</section>
+<section class="panel" id="complete" hidden aria-live="polite">
+<div class="symbol success" aria-hidden="true">✓</div>
+<h1 class="success">THINK BEFORE YOU CLICK</h1>
+<p><strong>This was a phishing awareness exercise.</strong> A real phishing link could expose patient information or compromise hospital systems.</p>
+<ul class="tips"><li>Check the sender's email address carefully.</li><li>Hover over links to inspect their destination before clicking.</li><li>Never enter passwords or patient details on suspicious pages.</li><li>Report suspicious emails to your IT / Security team.</li></ul>
+<p style="margin-top:22px">Protect patient privacy. Stay alert. Report suspicious activity.</p>
+<div class="actions"><button class="primary" id="restart">Restart demo</button><button id="close">Close page</button></div>
+</section>
+<footer>Educational demonstration only. No information is collected, and no device settings are changed.</footer>
+</main>
+<script>
+(()=>{const alertPanel=document.getElementById('alert'),completePanel=document.getElementById('complete'),timer=document.getElementById('timer'),bar=document.getElementById('bar');let interval=null,remaining=30;function finish(){clearInterval(interval);interval=null;alertPanel.hidden=true;completePanel.hidden=false;document.title='Think Before You Click | Awareness Training';}function start(){clearInterval(interval);remaining=30;timer.textContent='00:30';bar.style.width='100%';alertPanel.hidden=false;completePanel.hidden=true;document.title='Cybersecurity Awareness | Training Simulation';interval=setInterval(()=>{remaining--;timer.textContent='00:'+String(remaining).padStart(2,'0');bar.style.width=(remaining/30*100)+'%';if(remaining<=0)finish()},1000)}document.getElementById('skip').addEventListener('click',finish);document.getElementById('restart').addEventListener('click',start);document.getElementById('close').addEventListener('click',()=>{window.close();if(!window.closed){finish();document.querySelector('#complete p').textContent='You can safely close this browser tab at any time.'}});start()})();
+</script>
+</body>
+</html>
